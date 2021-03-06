@@ -12,10 +12,11 @@ authors = ["fdangelo <fdangelo@redhat.com>", "nycex <nycex@cccp.org>"]
 edition = "2018"
 
 [features]
-default = ["native-client", "middleware-logger"]
-native-client = ["surf/native-client"]
-hyper-client = ["surf/hyper-client"]
+default = ["surf/default"]
 curl-client = ["surf/curl-client"]
+h1-client = ["surf/h1-client"]
+h1-client-rustls = ["surf/h1-client-rustls"]
+hyper-client = ["surf/hyper-client"]
 wasm-client = ["surf/wasm-client"]
 middleware-logger = ["surf/middleware-logger"]
 
