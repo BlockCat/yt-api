@@ -21,6 +21,7 @@
 //! [search_perform]: ./search/struct.SearchList.html#method.perform
 
 pub mod search;
+pub mod playlistitems;
 
 use serde::Serialize;
 

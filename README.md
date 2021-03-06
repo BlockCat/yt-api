@@ -7,8 +7,9 @@
 With yt-api you can interact asynchronously with the youtube-api.
 Currently it implements the following endpoints:
  * search
+ * playlists
 
-## example
+## examples
 A basic search request with yt-api:
 
 ``` rust
@@ -34,6 +35,35 @@ fn main() -> Result<(), Error> {
             "https://youtube.com/watch?v={}",
             result.items[0].id.video_id.as_ref().unwrap()
         );
+
+        Ok(())
+    })
+}
+```
+
+A basic playlist request with yt-api:
+
+``` rust
+/// prints the first answer of a search query
+fn main(video_id: String) -> Result<(), Error> {
+    futures::executor::block_on(async {
+        // take api key from enviroment variable
+        let yt_token = env::var("YT_KEY")
+        .expect("Expected youtube token in environment");
+
+        // create the PlaylistItems struct for some playlist ID
+        let result = PlaylistItems::new(ApiKey::new(yt_token))
+        .playlist_id(video_id)
+        .max_results(50)
+        .await?;
+
+        let mut arg: String;
+        for item in result.items {
+            println!(
+                "https://youtube.com/watch?v={}",
+                item.snippet.resource_id.video_id
+            );
+        }
 
         Ok(())
     })

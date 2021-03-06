@@ -8,7 +8,7 @@ keywords = ["youtube", "api", "async"]
 categories = ["api-bindings", "asynchronous"]
 readme = "README.md"
 license = "MIT"
-authors = ["nycex <nycex@cccp.org>"]
+authors = ["fdangelo <fdangelo@redhat.com>", "nycex <nycex@cccp.org>"]
 edition = "2018"
 
 [features]
