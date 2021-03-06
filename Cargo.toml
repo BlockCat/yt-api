@@ -1,6 +1,6 @@
 [package]
 name = "yt-api"
-version = "0.3.0-alpha.2"
+version = "0.3.0"
 description = "a work in progress library to interact asynchronously with the youtube api"
 repository = "https://codeberg.org/nycex/yt-api"
 documentation = "https://docs.rs/yt-api"
