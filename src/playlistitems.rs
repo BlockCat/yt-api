@@ -15,8 +15,8 @@ use super::ApiKey;
 /// custom error type for the search endpoint
 #[derive(Debug, Snafu)]
 pub enum Error {
-	#[snafu(display("failed to connect to the api: {}", source))]
-	Connection { source: surf::Exception },
+	#[snafu(display("failed to connect to the api: {}", string))]
+	Connection { string: String },
 	#[snafu(display("failed to deserialize: {} {}", string, source))]
 	Deserialization {
 		string: String,
@@ -26,6 +26,14 @@ pub enum Error {
 	Serialization {
 		source: serde_urlencoded::ser::Error,
 	},
+}
+
+impl From<surf::Error> for Error {
+	fn from(surf_error: surf::Error) -> Self {
+		Error::Connection {
+			string: surf_error.to_string(),
+		}
+	}
 }
 
 /// request struct for the search endpoint
@@ -139,7 +147,7 @@ impl Future for PlaylistItems {
 					serde_urlencoded::to_string(&data).context(Serialization)?
 				);
 				debug!("getting {}", url);
-				let response = surf::get(&url).recv_string().await.context(Connection)?;
+				let response = surf::get(&url).recv_string().await?;
 				serde_json::from_str(&response)
 					.with_context(move || Deserialization { string: response })
 			}));

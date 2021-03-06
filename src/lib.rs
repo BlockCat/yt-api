@@ -20,8 +20,8 @@
 //! [search_list]: ./search/struct.SearchList.html
 //! [search_perform]: ./search/struct.SearchList.html#method.perform
 
-pub mod search;
 pub mod playlistitems;
+pub mod search;
 
 use serde::Serialize;
 
