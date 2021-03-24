@@ -569,11 +569,11 @@ pub struct Snippet {
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct Thumbnails {
-	default: Option<Thumbnail>,
-	medium: Option<Thumbnail>,
-	high: Option<Thumbnail>,
-	standard: Option<Thumbnail>,
-	maxres: Option<Thumbnail>,
+	pub default: Option<Thumbnail>,
+	pub medium: Option<Thumbnail>,
+	pub high: Option<Thumbnail>,
+	pub standard: Option<Thumbnail>,
+	pub maxres: Option<Thumbnail>,
 }
 
 #[derive(Debug, Clone, Deserialize)]

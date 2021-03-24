@@ -28,6 +28,19 @@ fn main() -> Result<(), Error> {
 			result.items[0].id.video_id.as_ref().unwrap()
 		);
 
+		println!(
+			"Default thumbnail: {}",
+			result.items[0]
+				.snippet
+				.thumbnails
+				.as_ref()
+				.unwrap()
+				.default
+				.as_ref()
+				.unwrap()
+				.url
+		);
+
 		Ok(())
 	})
 }
