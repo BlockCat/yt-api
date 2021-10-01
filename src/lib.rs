@@ -22,7 +22,7 @@
 
 pub mod playlistitems;
 pub mod search;
-
+pub mod videos;
 use serde::Serialize;
 
 #[derive(Debug, Clone, Serialize)]
